@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+// Prefer an environment-provided API URL (Vite: VITE_API_URL),
+// otherwise fall back to localhost:5001 where the backend is running in this workspace.
+const API_URL = import.meta?.env?.VITE_API_URL || 'http://localhost:5001/api';
 
 // Create axios instance
 const api = axios.create({

@@ -4,10 +4,6 @@ import { register, login, getMe, logout } from '../controllers/auth.controller.j
 import { authenticate } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
-
-// @route   POST /api/auth/register
-// @desc    Register a new user
-// @access  Public
 router.post('/register', [
   body('name')
     .trim()
@@ -24,10 +20,6 @@ router.post('/register', [
     .isLength({ min: 6 })
     .withMessage('Password must be at least 6 characters long')
 ], register);
-
-// @route   POST /api/auth/login
-// @desc    Login user
-// @access  Public
 router.post('/login', [
   body('email')
     .trim()
@@ -38,15 +30,7 @@ router.post('/login', [
     .notEmpty()
     .withMessage('Password is required')
 ], login);
-
-// @route   GET /api/auth/me
-// @desc    Get current logged in user
-// @access  Private
 router.get('/me', authenticate, getMe);
-
-// @route   POST /api/auth/logout
-// @desc    Logout user
-// @access  Private
 router.post('/logout', authenticate, logout);
 
 export default router;

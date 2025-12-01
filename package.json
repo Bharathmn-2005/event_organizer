@@ -1,0 +1,13 @@
+{
+  "name": "event-organizer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix backend install && npm --prefix event-hub install",
+    "dev": "concurrently \"PORT=5001 npm --prefix backend run start\" \"npm --prefix event-hub run dev\"",
+    "start": "npm --prefix backend start & npm --prefix event-hub preview"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
